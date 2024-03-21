@@ -13,9 +13,9 @@ import Grid from '@mui/material/Grid';
 import Typography, { TypographyProps } from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-
-import logoBv from '../public/logoLateral.png'
-import ffLogo from '../public/fflogo.png'
+// import handleLogin from './telaPainel'
+import logoBv from '../../assets/png/logoLateral.png'
+// import ffLogo from '../public/fflogo.png'
 
 function Copyright(props: TypographyProps) {
   return (
@@ -75,6 +75,8 @@ export default function SignInSide() {
           >
             <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
             </Avatar>
+            
+            {/* adicionar a minha logo futuramente */}
             {/* <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }} src={ffLogo} alt="Logo BV" /> */}
 
 
@@ -112,6 +114,7 @@ export default function SignInSide() {
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
+                // onClick={handleLogin}
               >
                 Entrar
               </Button>
