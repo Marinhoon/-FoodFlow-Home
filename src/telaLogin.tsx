@@ -14,7 +14,8 @@ import Typography, { TypographyProps } from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 
-import logoBv from '../public/logoBv.png'
+import logoBv from '../public/logoLateral.png'
+import ffLogo from '../public/fflogo.png'
 
 function Copyright(props: TypographyProps) {
   return (
@@ -53,7 +54,8 @@ export default function SignInSide() {
           md={7}
 
           sx={{
-            backgroundImage: (logoBv),
+            
+            backgroundImage: `url(${logoBv})`,
             backgroundRepeat: 'no-repeat',
             backgroundColor: (t) =>
               t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
@@ -73,6 +75,8 @@ export default function SignInSide() {
           >
             <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
             </Avatar>
+            {/* <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }} src={ffLogo} alt="Logo BV" /> */}
+
 
             <Typography component="h1" variant="h5">
               Bem Vindo!
