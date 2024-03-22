@@ -10,6 +10,8 @@ import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 
+import { useNavigate } from "react-router-dom";
+
 import Typography, { TypographyProps } from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
@@ -34,13 +36,18 @@ function Copyright(props: TypographyProps) {
 const defaultTheme = createTheme();
 
 export default function SignInSide() {
+  const navigate = useNavigate();
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     console.log({
+    
       email: data.get('email'),
       password: data.get('password'),
     });
+    navigate("/painel");
+    console.log ("texto redirect")
   };
 
   return (
