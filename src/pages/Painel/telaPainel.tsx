@@ -1,155 +1,172 @@
-import { useNavigate, Link } from "react-router-dom"
-import { homeOutline } from 'ionicons/icons';
-import { IonIcon } from '@ionic/react';
-import styles from './telaPainel.module.css'
+import * as React from 'react';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import Menu from '@mui/material/Menu';
+import MenuIcon from '@mui/icons-material/Menu';
+import Container from '@mui/material/Container';
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import Tooltip from '@mui/material/Tooltip';
+import MenuItem from '@mui/material/MenuItem';
+import AdbIcon from '@mui/icons-material/Adb';
 
-export default function TelaPainel (){
-    const navigate = useNavigate ()
-    return <body>
-    <div id={styles.app}>
-      <nav>
-        <img src="" id={styles.logoBv} alt="Logo do site" className={styles.logo} />
-  
-        <ul>
-          <li>
-            <Link to= "" className={styles.active}>
-              <IonIcon icon={homeOutline}/>
-              Inicio
-              </Link>
-          </li>
+import { useNavigate } from 'react-router-dom';
 
-          <li>
-            <a href="/components/pacientes.html"onClick={()=>navigate('/pacientes')}>
-              {/* <ion-icon name="people-outline"></ion-icon> */}
-              Pacientes
-            </a>
-          </li>
-  
-          <li>
-            <a href="/components/relatorios.html"onClick={()=>navigate('/relatorios')}>
-              {/* <ion-icon name="document-text"></ion-icon> */}
-              Relatórios
-            </a>
-          </li>
-  
-          <li>
-          <a href="/components/creditos.html"onClick={()=>navigate('/creditos')}>
-            {/* <ion-icon name="cash-outline"></ion-icon> */}
-            Créditos
-          </a>
-          </li>
-  
-          <li>
-          <a href="/components/produtos.html"onClick={()=>navigate('/produtos')}>
-            {/* <ion-icon name="cube-outline"></ion-icon> */}
-            Produtos
-          </a>
-          </li>
-  
-          <li>
-            <a href="/components/ajustes.html"onClick={()=>navigate('/ajustes')}>
-              {/* <ion-icon name="cog"></ion-icon> */}
-              Ajustes
-            </a>
-          </li>
-  
-        </ul>
-      </nav>
-      <main>
-        <div className={styles.inner}>
-          <section className={styles.titleAvatar}>
-            <h1>Bem Vindo! <img src="./assets/pencil.svg" alt="" /></h1>
-            <img alt="avatar" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-  
-          </section>
-  
-          <section className={styles.ilter}>
-            <button>
-              {/* <ion-icon name="filter-outline"></ion-icon>
-              <span>Filtrar</span> */}
-            </button>
-            <div className={styles.inputWrapper}>
-              {/* <ion-icon name="search-outline"></ion-icon> */}
-              <input type="text" placeholder="Busque por cards, assuntos ou responsáveis..." />
-            </div>
-          </section>
+const pages = ['Inicio', 'Produtos', 'Pacientes', 'Créditos', 'Relatórios', 'Caixa'];
+const settings = ['Perfil', 'Conta', 'Painel', 'Sair'];
+console.log(settings)
 
-          <section className={styles.kanban}>
-            <div className={styles.todo}>
-              <h2>Pacientes</h2>
-              <div className={styles.cards}>
-                <div className={styles.card}>
-                  <h3>Atualização Semanal</h3>
-                  <p>
-                    
-                  </p>
-                  <div className={styles.tags}>
-                  </div>
-                </div>
-                <div className={styles.card}>
-                  <h3>Atualização Mensal</h3>
-                  <p>
-                    
-                  </p>
-                  <div className={styles.tags}>
 
-                  </div>
-                </div>
-                <div className={styles.card}>
-                  <h3>Atualização Anual</h3>
-                  <p>
-                    
-                  </p>
-                  <div className={styles.tags}>
+function ResponsiveAppBar() {
+  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
+  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className={styles.doing}>
-              <h2>Relatórios de créditos</h2>
-              <div className={styles.cards}>
-                <div className={styles.card}>
-                  <h3>Valores Total</h3>
-                  <p>
-                  </p>
-                  <div className={styles.tags}>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className={styles.done}>
-              <h2>Protutos Atualizados</h2>
-              <div className={styles.cards}>
-                <div className={styles.card}>
-                  <h3>Atualização Semanal</h3>
-                  <p>
-                  </p>
-                  <div className={styles.tags}>
-   
-                  </div>
-                </div>
-                <div className={styles.card}>
-                  <h3>Atualização Mensal</h3>
-                  <p>
-                  </p>
-                  <div className={styles.tags}>
-   
-                  </div>
-                </div>
-                <div className={styles.card}>
-                  <h3>Atualização Anual</h3>
-                  <p>
-                  </p>
-                  <div className={styles.tags}>
-   
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-        </div>
-      </main>
-    </div>
-  </body>
+  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElNav(event.currentTarget);
+  };
+  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElUser(event.currentTarget);
+  };
+
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
+
+  const navigate = useNavigate();
+
+  const handleCloseUserMenu = (label: string) => 
+  {
+    if (label==="Sair"){
+      navigate('/');
+    }
+    console.log(label)
+
 }
+  return (
+    <AppBar position="static">
+      <Container maxWidth="xl">
+        <Toolbar disableGutters>
+          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          <Typography
+            variant="h6"
+            noWrap
+            component="a"
+            href="#app-bar-with-responsive-menu"
+            sx={{
+              mr: 2,
+              display: { xs: 'none', md: 'flex' },
+              fontFamily: 'monospace',
+              fontWeight: 700,
+              letterSpacing: '.3rem',
+              color: 'inherit',
+              textDecoration: 'none',
+            }}
+          >
+            FoodFlow
+          </Typography>
+
+          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+            <IconButton
+              size="large"
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleOpenNavMenu}
+              color="inherit"
+            >
+              <MenuIcon />
+            </IconButton>
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorElNav}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'left',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'left',
+              }}
+              open={Boolean(anchorElNav)}
+              onClose={handleCloseNavMenu}
+              sx={{
+                display: { xs: 'block', md: 'none' },
+              }}
+            >
+              {pages.map((page) => (
+                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">{page}</Typography>
+                </MenuItem>
+              ))}
+            </Menu>
+          </Box>
+          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          <Typography
+            variant="h5"
+            noWrap
+            component="a"
+            href="#app-bar-with-responsive-menu"
+            sx={{
+              mr: 2,
+              display: { xs: 'flex', md: 'none' },
+              flexGrow: 1,
+              fontFamily: 'monospace',
+              fontWeight: 700,
+              letterSpacing: '.3rem',
+              color: 'inherit',
+              textDecoration: 'none',
+            }}
+          >
+            FoodFlow
+          </Typography>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+            {pages.map((page) => (
+              <Button
+                key={page}
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: 'white', display: 'block' }}
+              >
+                {page}
+              </Button>
+            ))}
+          </Box>
+
+          <Box sx={{ flexGrow: 0 }}>
+            <Tooltip title="Open settings">
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+              </IconButton>
+            </Tooltip>
+            <Menu
+              sx={{ mt: '45px' }}
+              id="menu-appbar"
+              anchorEl={anchorElUser}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              open={Boolean(anchorElUser)}
+              onClose={handleCloseUserMenu}
+            >
+              {settings.map((label) => (
+                <MenuItem key={label} onClick={() => handleCloseUserMenu(label)}>
+                  <Typography textAlign="center">{label}</Typography>
+                </MenuItem>
+              ))}
+            </Menu>
+          </Box>
+        </Toolbar>
+      </Container>
+    </AppBar>
+  );
+}
+export default ResponsiveAppBar;
