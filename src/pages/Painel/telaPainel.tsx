@@ -6,15 +6,15 @@ import styles from './telaPainel.module.css'
 export default function TelaPainel (){
     const navigate = useNavigate ()
     return <body>
-    <div id="app">
+    <div id={styles.app}>
       <nav>
-        <img src="" id="logoBv" alt="Logo do site" className={styles.logo} />
+        <img src="" id={styles.logoBv} alt="Logo do site" className={styles.logo} />
   
         <ul>
           <li>
-            <Link to="/inicio" className={styles.active}>
+            <Link to= "" className={styles.active}>
               <IonIcon icon={homeOutline}/>
-              Inicio 
+              Inicio
               </Link>
           </li>
 
@@ -57,7 +57,7 @@ export default function TelaPainel (){
       </nav>
       <main>
         <div className={styles.inner}>
-          <section className="title-avatar">
+          <section className={styles.titleAvatar}>
             <h1>Bem Vindo! <img src="./assets/pencil.svg" alt="" /></h1>
             <img alt="avatar" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
   
