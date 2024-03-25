@@ -13,6 +13,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 
+
 import { useNavigate } from 'react-router-dom';
 
 const pages = ['Inicio', 'Produtos', 'Pacientes', 'Créditos', 'Relatórios', 'Caixa'];
@@ -43,7 +44,6 @@ function ResponsiveAppBar() {
       navigate('/');
     }
     console.log(label)
-
 }
   return (
     <AppBar position="static">
